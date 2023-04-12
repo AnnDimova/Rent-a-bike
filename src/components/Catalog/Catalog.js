@@ -69,6 +69,10 @@ export const Catalog = () => {
   const onClearHandler = (e) => {
     e.preventDefault();
     setFilteredBikes(bikes);
+    const nameInput = document.querySelector('.search-name');
+    const typeInput = document.querySelector('.type-select');
+    nameInput.value = '';
+    typeInput.value = 'all-bikes';
   };
 
   return (

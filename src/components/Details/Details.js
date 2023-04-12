@@ -24,20 +24,20 @@ export const Details = () => {
     <section className="details">
       <div className="row">
         <div className="col-6">
-          <div className="boat-img">
+          <div className="bike-img">
             <img src={currentBike.image} alt=" " />
           </div>
         </div>
         <div className="col-6">
-          <div className="boat-info">
-            <div className="boat-text">
+          <div className="bike-info">
+            <div className="bike-text">
               <p className="detail-title font-weight-bold-title">Details</p>
               <p className="detail">
                 <span className="font-weight-bold">Name: </span>
                 {currentBike.name}
               </p>
               <p className="detail">
-                <span className="font-weight-bold">Boat type: </span>
+                <span className="font-weight-bold">Bike type: </span>
                 {currentBike.type}
               </p>
               <p className="detail">
