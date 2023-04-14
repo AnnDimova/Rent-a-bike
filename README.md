@@ -1,70 +1,107 @@
-# Getting Started with Create React App
+# Overview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Bike rental is an application that allows users to post and rent bikes for specific time period.
 
-## Available Scripts
+The project consists of 2 main modules:
 
-In the project directory, you can run:
+- Server (SoftUni Practice Server)
+- SPA built with React
 
-### `npm start`
+# Run app locally
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+In order to run the SoftUni Practice Server, go to the `server` folder and run the following command:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
+node server.js
+```
 
-### `npm test`
+After the server is running, the front end app can be initiated from the root folder:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+npm install
+npm run start
+```
 
-### `npm run build`
+# Main functionalities
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Unauthenticated user
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- View all listings
+- View detailed information about individual listings
+- Search by name and filter by type
+- Register/Login
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Authenticated user
 
-### `npm run eject`
+- View all listings
+- View detailed information about individual listings
+- Search by name and filter by type
+- Create listing
+- Edit/Delete own listings
+- View sent and received quotes
+- Get quotes for other users' listings
+- Approve/Reject quotes for user's own listings
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+# Architecture overview
+The application code is devided into the following logical chunks:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- App.js - app initialization and routes 
+- Components - consists of all UI components 
+- Constants
+- Contexts - AuthContext (User Authentication)
+- Hooks - consists of custom hook for using the local storage
+- routeGuards - guard that ensures that the user has access to particular views
+- Services - used for API requests and validation logic
+- Utils - reusable common utilities
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Main views
 
-## Learn More
+### Home page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+On the home page the recently added bikes are shown.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Home%20page.png?raw=true)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Bikes page
 
-### Code Splitting
+Shows a catalog of all listings (if there are any) with the posibility to search bikes by name and by type.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Bikes%20page.png?raw=true)
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Bikes%20page%20two.png?raw=true)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Login and Register pages
 
-### Analyzing the Bundle Size
+Login and register functionalities with input validation and error handling.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Login%20page.png?raw=true)
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Register%20page.png?raw=true)
 
-### Making a Progressive Web App
+### Details page for logged in users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Logged users can get quotes for listed bikes by choosing specific time period (time period is validated).
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Pick%20period.png?raw=true)
 
-### Advanced Configuration
+### Details page for owner of the listing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Logged in user that is owner of the listing can access edit and delete buttons through the details page.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Details%20page.png?raw=true)
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Delete%20listing.png?raw=true)
 
-### Deployment
+### Create page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Allows users to create their own listing. Form inputs are beign validated.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Create%20Listing.png?raw=true)
 
-### `npm run build` fails to minify
+### Edit page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Owner of the current listing can edit the information about it. Form inputs are beign validated.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Edit%20listing.png?raw=true)
+
+### My profile page
+
+Every user has a my profile page, where they can see basic user information and information about the quotes concerning the current user (quotes that he made and quotes that were made for his listings). The quotes are separated into two tables, where you have the option to accept or reject a quote.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/My%20profile.png?raw=true)
+
+### Error page
+
+When you enter invalid route.
+![image](https://github.com/AnnDimova/Rent-a-bike/blob/master/Screenshots/Error.png?raw=true)
