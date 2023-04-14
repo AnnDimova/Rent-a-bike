@@ -14,7 +14,7 @@ export const Details = () => {
 
   useEffect(() => {
     bikeService.getOne(bikeId).then((bikeData) => {
-        setCurrentBike(bikeData);
+      setCurrentBike(bikeData);
     });
   }, [bikeId]);
 
@@ -49,9 +49,7 @@ export const Details = () => {
                 {currentBike.price}
               </p>
               <p id="description">
-                <span className="font-weight-bold">
-                  Additional information:
-                </span>
+                <span className="font-weight-bold">Add description:</span>
               </p>
               <p id="description">{currentBike.description}</p>
               <div className="details-btn">

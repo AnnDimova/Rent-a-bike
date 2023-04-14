@@ -288,7 +288,7 @@ export const Edit = () => {
             </div>
             <div className="form-group">
               <label htmlFor="description" className="font-weight-bold">
-                Additional information:
+                Add description:
               </label>
               <textarea
                 id="description"

@@ -201,7 +201,7 @@ export const Create = () => {
                     type="number"
                     id="capacity"
                     name="capacity"
-                    placeholder="4 persons"
+                    placeholder="1 person"
                     onBlur={() => blurHandler(formFields.capacity)}
                   />
                   {validationErrors?.capacity && (
@@ -222,7 +222,7 @@ export const Create = () => {
                     type="text"
                     id="location"
                     name="location"
-                    placeholder="Lefcada Island"
+                    placeholder="Miami"
                     onBlur={() => blurHandler(formFields.location)}
                   />
                   {validationErrors?.location && (
@@ -243,7 +243,7 @@ export const Create = () => {
                     type="number"
                     id="price"
                     name="price"
-                    placeholder="$1000.00"
+                    placeholder="$25.00"
                     onBlur={() => blurHandler(formFields.price)}
                   />
                   {validationErrors?.price && (
@@ -260,13 +260,13 @@ export const Create = () => {
 
             <div className="form-group">
               <label htmlFor="description" className="font-weight-bold">
-                Additional information:
+                Add description:
               </label>
               <textarea
                 type="text"
                 id="description"
                 name="description"
-                placeholder="Add info..."
+                placeholder="Add description.."
                 defaultValue={""}
                 onBlur={() => blurHandler(formFields.description)}
               />
