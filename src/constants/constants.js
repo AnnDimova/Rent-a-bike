@@ -1,4 +1,4 @@
-export const bikeTypes = ["City Bikes", "MTB Bikes", "Road Bikes", "Easy-on Bikes"];
+export const bikeTypes = ["City", "MTB", "Road", "Easy-on"];
 
 export const formFields = {
   name: "name",
